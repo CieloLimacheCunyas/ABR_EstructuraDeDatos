@@ -1,0 +1,29 @@
+// FUNCIONES RECURSIVAS 
+// ------------------------------------------
+
+// 1. Insertar nodo (ABB estándar)
+void insertarFamiliar(NodoGenealogico* &raiz, string nombre, int generacion) {
+    if (raiz == nullptr) {
+        raiz = new NodoGenealogico(nombre, generacion);  // Caso base
+    } else if (generacion < raiz->generacion) {
+        insertarFamiliar(raiz->padre, nombre, generacion);  // Llamada recursiva izquierda
+    } else {
+        insertarFamiliar(raiz->madre, nombre, generacion);  // Llamada recursiva derecha
+    }
+}
+
+// 2. Recorrido Inorden (PPT 14)
+void mostrarInorden(NodoGenealogico* raiz) {
+    if (raiz != nullptr) {
+        mostrarInorden(raiz->padre);
+        cout << raiz->nombre << " (Gen " << raiz->generacion << ")" << endl;
+        mostrarInorden(raiz->madre);
+    }
+}
+
+// 3. Búsqueda recursiva (como "buscar tesoro" PPT 13)
+bool buscarFamiliar(NodoGenealogico* raiz, string nombre) {
+    if (raiz == nullptr) return false;  // Caso base
+    if (raiz->nombre == nombre) return true;
+    return buscarFamiliar(raiz->padre, nombre) || buscarFamiliar(raiz->madre, nombre);
+}

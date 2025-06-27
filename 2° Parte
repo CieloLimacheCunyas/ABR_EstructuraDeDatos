@@ -1,5 +1,4 @@
 // FUNCIONES RECURSIVAS 
-// ------------------------------------------
 
 // 1. Insertar nodo (ABB estándar)
 void insertarFamiliar(NodoGenealogico* &raiz, string nombre, int generacion) {

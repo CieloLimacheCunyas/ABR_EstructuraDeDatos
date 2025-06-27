@@ -1,0 +1,39 @@
+// PROGRAMA PRINCIPAL 
+int main() {
+    NodoGenealogico* arbol = nullptr;
+    int opcion;
+
+    do {
+        cout << "\n=== ARBOL GENEALOGICO ===" << endl;
+        cout << "1. Agregar familiar" << endl;
+        cout << "2. Mostrar familia (Inorden)" << endl;
+        cout << "3. Buscar familiar" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Opcion: ";
+        cin >> opcion;
+
+        if (opcion == 1) {
+            string nombre;
+            int generacion;
+            cout << "Nombre: ";
+            cin >> nombre;
+            cout << "Generacion (1=abuelo, 2=padre, etc.): ";
+            cin >> generacion;
+            insertarFamiliar(arbol, nombre, generacion);
+        } else if (opcion == 2) {
+            cout << "\nFAMILIA (Orden generacional):" << endl;
+            mostrarInorden(arbol);
+        } else if (opcion == 3) {
+            string nombre;
+            cout << "Nombre a buscar: ";
+            cin >> nombre;
+            if (buscarFamiliar(arbol, nombre)) {
+                cout << nombre << " esta en el arbol!" << endl;
+            } else {
+                cout << nombre << " NO encontrado." << endl;
+            }
+        }
+    } while (opcion != 4);
+
+    return 0;
+}

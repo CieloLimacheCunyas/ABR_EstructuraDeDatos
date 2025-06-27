@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// ------------------------------------------
+// ESTRUCTURA DEL NODO 
+// ------------------------------------------
+struct NodoGenealogico {
+    string nombre;
+    int generacion;  // 1=abuelos, 2=padres, etc.
+    NodoGenealogico* padre;   // Subárbol izquierdo (como en ABB)
+    NodoGenealogico* madre;   // Subárbol derecho
+
+    // Constructor (como en ejemplos básicos)
+    NodoGenealogico(string n, int g) : nombre(n), generacion(g), padre(nullptr), madre(nullptr) {}
+};
